@@ -179,7 +179,7 @@ namespace WindowsFormsApp1
             //Calculate gem cost for reaching target value
             int hundPack = netToken / 100;
             int tenPack = (int)Math.Ceiling((netToken % 100) / 10.0);
-            int gemCost = (hundPack * 600 + tenPack * 80)-myGems;
+            int gemCost = (hundPack * 600 + tenPack * 80) - myGems;
             //Trivial case where net gem cost is negative (the user already has enough resources to fund their target)
             if (gemCost <= 0)
             {
@@ -187,13 +187,13 @@ namespace WindowsFormsApp1
                 return;
             }
             //Set temporary array for calculation depending on server
-            int[,] gems = new int[0,0];
+            int[,] gems = new int[0, 0];
             if (serverGl)
-                gems = (int[,]) glGemArray.Clone();
+                gems = (int[,])glGemArray.Clone();
             else
-                gems = (int[,]) krGemArray.Clone();
-            if(dubGems) //double gems if applying bonuses
-                for(int i = 0; i < gems.Length / 2; i++)
+                gems = (int[,])krGemArray.Clone();
+            if (dubGems) //double gems if applying bonuses
+                for (int i = 0; i < gems.Length / 2; i++)
                 {
                     gems[i, 0] *= 2;
                 }
@@ -220,10 +220,10 @@ namespace WindowsFormsApp1
                 remainder = gemCost % gems[i, 0];
                 //In the efficient strategy,
                 if ((remainder > 0 &&   //if there is a non-zero leftover that we still need to take care of
-                    i < gems.Length/2 - 1 &&  //and this is not the last package
+                    i < gems.Length / 2 - 1 &&  //and this is not the last package
                     Math.Ceiling((double)remainder / gems[i, 0]) * gems[i, 1] //and the expenditure to cover the remainder with this package
                     <= Math.Ceiling((double)remainder / gems[i + 1, 0]) * gems[i + 1, 1]) //is less than the expenditure to cover the remainder with the next, smaller package
-                    || i == gems.Length/2 - 1)  //or if this happens to be the last package available, and this is the only way to clean up the leftover
+                    || i == gems.Length / 2 - 1)  //or if this happens to be the last package available, and this is the only way to clean up the leftover
                 {
                     //then buy this package since it's more efficient than buying multiple of the next package (or there is no next package to buy)
                     //In this case we will not purchase any further packages and we can break out of the loop
@@ -254,8 +254,8 @@ namespace WindowsFormsApp1
                         efficientQuote += glGemArray[i, 1] * efficientPackage[i];
                     }
                 }
-                output += "\nCosting a net "+efficientQuote +" USD\n"+
-                "and "+efficientGemsLeft+" additional gems left over";
+                output += "\nCosting a net " + efficientQuote + " USD\n" +
+                "and " + efficientGemsLeft + " additional gems left over";
             }
             else
             {
@@ -263,7 +263,7 @@ namespace WindowsFormsApp1
                 {
                     if (efficientPackage[i] != 0)
                     {
-                        output += efficientPackage[i] + "x " + krGemName[i]+"\n";
+                        output += efficientPackage[i] + "x " + krGemName[i] + "\n";
                         efficientQuote += krGemArray[i, 1] * efficientPackage[i];
                     }
                 }
