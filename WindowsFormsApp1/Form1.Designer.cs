@@ -29,105 +29,102 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.myTokensUpDown = new System.Windows.Forms.NumericUpDown();
-            this.myTokensLabel = new System.Windows.Forms.Label();
-            this.calculateTokens = new System.Windows.Forms.RadioButton();
-            this.calculateTickets = new System.Windows.Forms.RadioButton();
-            this.tokensOrTicketsLabel = new System.Windows.Forms.Label();
-            this.TargetUpDown = new System.Windows.Forms.NumericUpDown();
-            this.serverGLRadio = new System.Windows.Forms.RadioButton();
-            this.serverGroupBox = new System.Windows.Forms.GroupBox();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.CalcTabs = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.serverKORadio = new System.Windows.Forms.RadioButton();
-            this.myGemsUpDown = new System.Windows.Forms.NumericUpDown();
-            this.myGemsLabel = new System.Windows.Forms.Label();
-            this.calculateButton = new System.Windows.Forms.Button();
-            this.TicketThresholdLabel = new System.Windows.Forms.Label();
-            this.efficientOutputLabel = new System.Windows.Forms.Label();
-            this.clearButton = new System.Windows.Forms.Button();
-            this.doubleCheckBox = new System.Windows.Forms.CheckBox();
+            this.serverGLRadio = new System.Windows.Forms.RadioButton();
             this.targetTypeLabel = new System.Windows.Forms.Label();
-            this.aboutLabel = new System.Windows.Forms.Label();
-            this.languageGroupBox = new System.Windows.Forms.GroupBox();
-            this.KoreanLanguageButton = new System.Windows.Forms.RadioButton();
-            this.EnglishRadioButton = new System.Windows.Forms.RadioButton();
-            ((System.ComponentModel.ISupportInitialize)(this.myTokensUpDown)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TargetUpDown)).BeginInit();
-            this.serverGroupBox.SuspendLayout();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.efficientOutputLabel = new System.Windows.Forms.Label();
+            this.TicketThresholdLabel = new System.Windows.Forms.Label();
+            this.calculateButton = new System.Windows.Forms.Button();
+            this.myGemsLabel = new System.Windows.Forms.Label();
+            this.myGemsUpDown = new System.Windows.Forms.NumericUpDown();
+            this.serverGroupBox = new System.Windows.Forms.GroupBox();
+            this.TargetUpDown = new System.Windows.Forms.NumericUpDown();
+            this.tokensOrTicketsLabel = new System.Windows.Forms.Label();
+            this.calculateTickets = new System.Windows.Forms.RadioButton();
+            this.calculateTokens = new System.Windows.Forms.RadioButton();
+            this.myTokensLabel = new System.Windows.Forms.Label();
+            this.myTokensUpDown = new System.Windows.Forms.NumericUpDown();
+            this.AssumptionsLabel = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.AboutLabel = new System.Windows.Forms.Label();
+            this.CalcTabs.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.myGemsUpDown)).BeginInit();
-            this.languageGroupBox.SuspendLayout();
+            this.serverGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TargetUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myTokensUpDown)).BeginInit();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // myTokensUpDown
+            // CalcTabs
             // 
-            this.myTokensUpDown.Location = new System.Drawing.Point(61, 90);
-            this.myTokensUpDown.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.myTokensUpDown.Name = "myTokensUpDown";
-            this.myTokensUpDown.Size = new System.Drawing.Size(120, 22);
-            this.myTokensUpDown.TabIndex = 0;
-            this.myTokensUpDown.ValueChanged += new System.EventHandler(this.myTokensUpDown_ValueChanged);
+            this.CalcTabs.Controls.Add(this.tabPage1);
+            this.CalcTabs.Controls.Add(this.tabPage2);
+            this.CalcTabs.Controls.Add(this.tabPage3);
+            this.CalcTabs.Location = new System.Drawing.Point(0, 0);
+            this.CalcTabs.Name = "CalcTabs";
+            this.CalcTabs.SelectedIndex = 0;
+            this.CalcTabs.Size = new System.Drawing.Size(784, 555);
+            this.CalcTabs.TabIndex = 0;
             // 
-            // myTokensLabel
+            // tabPage1
             // 
-            this.myTokensLabel.AutoSize = true;
-            this.myTokensLabel.Location = new System.Drawing.Point(16, 70);
-            this.myTokensLabel.Name = "myTokensLabel";
-            this.myTokensLabel.Size = new System.Drawing.Size(209, 17);
-            this.myTokensLabel.TabIndex = 1;
-            this.myTokensLabel.Text = "How many tokens do you have?";
+            this.tabPage1.Controls.Add(this.efficientOutputLabel);
+            this.tabPage1.Controls.Add(this.targetTypeLabel);
+            this.tabPage1.Controls.Add(this.clearButton);
+            this.tabPage1.Controls.Add(this.TicketThresholdLabel);
+            this.tabPage1.Controls.Add(this.calculateButton);
+            this.tabPage1.Controls.Add(this.myGemsLabel);
+            this.tabPage1.Controls.Add(this.myGemsUpDown);
+            this.tabPage1.Controls.Add(this.serverGroupBox);
+            this.tabPage1.Controls.Add(this.TargetUpDown);
+            this.tabPage1.Controls.Add(this.tokensOrTicketsLabel);
+            this.tabPage1.Controls.Add(this.calculateTickets);
+            this.tabPage1.Controls.Add(this.calculateTokens);
+            this.tabPage1.Controls.Add(this.myTokensLabel);
+            this.tabPage1.Controls.Add(this.myTokensUpDown);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(776, 526);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Calculator";
+            this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // calculateTokens
+            // tabPage2
             // 
-            this.calculateTokens.AutoSize = true;
-            this.calculateTokens.Location = new System.Drawing.Point(310, 170);
-            this.calculateTokens.Name = "calculateTokens";
-            this.calculateTokens.Size = new System.Drawing.Size(76, 21);
-            this.calculateTokens.TabIndex = 4;
-            this.calculateTokens.Text = "Tokens";
-            this.calculateTokens.UseVisualStyleBackColor = true;
+            this.tabPage2.Controls.Add(this.AssumptionsLabel);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(776, 526);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "How to use";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // calculateTickets
+            // serverKORadio
             // 
-            this.calculateTickets.AutoSize = true;
-            this.calculateTickets.Checked = true;
-            this.calculateTickets.Location = new System.Drawing.Point(310, 145);
-            this.calculateTickets.Name = "calculateTickets";
-            this.calculateTickets.Size = new System.Drawing.Size(140, 21);
-            this.calculateTickets.TabIndex = 3;
-            this.calculateTickets.TabStop = true;
-            this.calculateTickets.Text = "Exchange Tickets";
-            this.calculateTickets.UseVisualStyleBackColor = true;
-            this.calculateTickets.CheckedChanged += new System.EventHandler(this.calculateTickets_CheckedChanged);
-            // 
-            // tokensOrTicketsLabel
-            // 
-            this.tokensOrTicketsLabel.AutoSize = true;
-            this.tokensOrTicketsLabel.Location = new System.Drawing.Point(307, 70);
-            this.tokensOrTicketsLabel.Name = "tokensOrTicketsLabel";
-            this.tokensOrTicketsLabel.Size = new System.Drawing.Size(136, 17);
-            this.tokensOrTicketsLabel.TabIndex = 5;
-            this.tokensOrTicketsLabel.Text = "What is your target?";
-            // 
-            // TargetUpDown
-            // 
-            this.TargetUpDown.Location = new System.Drawing.Point(310, 90);
-            this.TargetUpDown.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.TargetUpDown.Name = "TargetUpDown";
-            this.TargetUpDown.Size = new System.Drawing.Size(120, 22);
-            this.TargetUpDown.TabIndex = 2;
-            this.TargetUpDown.ValueChanged += new System.EventHandler(this.TargetUpDown_ValueChanged);
+            this.serverKORadio.AutoSize = true;
+            this.serverKORadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverKORadio.Location = new System.Drawing.Point(6, 48);
+            this.serverKORadio.Name = "serverKORadio";
+            this.serverKORadio.Size = new System.Drawing.Size(75, 21);
+            this.serverKORadio.TabIndex = 9;
+            this.serverKORadio.TabStop = true;
+            this.serverKORadio.Text = "Korean";
+            this.serverKORadio.UseVisualStyleBackColor = true;
             // 
             // serverGLRadio
             // 
             this.serverGLRadio.AutoSize = true;
             this.serverGLRadio.Checked = true;
+            this.serverGLRadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.serverGLRadio.Location = new System.Drawing.Point(6, 21);
             this.serverGLRadio.Name = "serverGLRadio";
             this.serverGLRadio.Size = new System.Drawing.Size(103, 21);
@@ -137,31 +134,73 @@ namespace WindowsFormsApp1
             this.serverGLRadio.UseVisualStyleBackColor = true;
             this.serverGLRadio.CheckedChanged += new System.EventHandler(this.serverGLRadio_CheckedChanged);
             // 
-            // serverGroupBox
+            // targetTypeLabel
             // 
-            this.serverGroupBox.Controls.Add(this.serverKORadio);
-            this.serverGroupBox.Controls.Add(this.serverGLRadio);
-            this.serverGroupBox.Location = new System.Drawing.Point(640, 12);
-            this.serverGroupBox.Name = "serverGroupBox";
-            this.serverGroupBox.Size = new System.Drawing.Size(128, 75);
-            this.serverGroupBox.TabIndex = 9;
-            this.serverGroupBox.TabStop = false;
-            this.serverGroupBox.Text = "Server:";
+            this.targetTypeLabel.AutoSize = true;
+            this.targetTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.targetTypeLabel.Location = new System.Drawing.Point(273, 68);
+            this.targetTypeLabel.Name = "targetTypeLabel";
+            this.targetTypeLabel.Size = new System.Drawing.Size(163, 17);
+            this.targetTypeLabel.TabIndex = 37;
+            this.targetTypeLabel.Text = "4. And this target is for...";
             // 
-            // serverKORadio
+            // clearButton
             // 
-            this.serverKORadio.AutoSize = true;
-            this.serverKORadio.Location = new System.Drawing.Point(6, 48);
-            this.serverKORadio.Name = "serverKORadio";
-            this.serverKORadio.Size = new System.Drawing.Size(75, 21);
-            this.serverKORadio.TabIndex = 9;
-            this.serverKORadio.TabStop = true;
-            this.serverKORadio.Text = "Korean";
-            this.serverKORadio.UseVisualStyleBackColor = true;
+            this.clearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clearButton.Location = new System.Drawing.Point(499, 61);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(105, 28);
+            this.clearButton.TabIndex = 36;
+            this.clearButton.Text = "Reset";
+            this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click_1);
+            // 
+            // efficientOutputLabel
+            // 
+            this.efficientOutputLabel.AutoSize = true;
+            this.efficientOutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efficientOutputLabel.Location = new System.Drawing.Point(93, 294);
+            this.efficientOutputLabel.Name = "efficientOutputLabel";
+            this.efficientOutputLabel.Size = new System.Drawing.Size(40, 17);
+            this.efficientOutputLabel.TabIndex = 35;
+            this.efficientOutputLabel.Text = "        ";
+            // 
+            // TicketThresholdLabel
+            // 
+            this.TicketThresholdLabel.AutoSize = true;
+            this.TicketThresholdLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TicketThresholdLabel.Location = new System.Drawing.Point(273, 152);
+            this.TicketThresholdLabel.Name = "TicketThresholdLabel";
+            this.TicketThresholdLabel.Size = new System.Drawing.Size(181, 85);
+            this.TicketThresholdLabel.TabIndex = 34;
+            this.TicketThresholdLabel.Text = "Exchange ticket thresholds:\r\n\r\n600 for L2D costumes\r\n200 for 5 star dolls\r\n100 fo" +
+    "r other dolls";
+            // 
+            // calculateButton
+            // 
+            this.calculateButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.calculateButton.Location = new System.Drawing.Point(499, 24);
+            this.calculateButton.Name = "calculateButton";
+            this.calculateButton.Size = new System.Drawing.Size(105, 28);
+            this.calculateButton.TabIndex = 30;
+            this.calculateButton.Text = "5. Calculate";
+            this.calculateButton.UseVisualStyleBackColor = true;
+            this.calculateButton.Click += new System.EventHandler(this.calculateButton_Click_1);
+            // 
+            // myGemsLabel
+            // 
+            this.myGemsLabel.AutoSize = true;
+            this.myGemsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.myGemsLabel.Location = new System.Drawing.Point(12, 63);
+            this.myGemsLabel.Name = "myGemsLabel";
+            this.myGemsLabel.Size = new System.Drawing.Size(217, 17);
+            this.myGemsLabel.TabIndex = 33;
+            this.myGemsLabel.Text = "2. How many gems do you have?";
             // 
             // myGemsUpDown
             // 
-            this.myGemsUpDown.Location = new System.Drawing.Point(61, 145);
+            this.myGemsUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.myGemsUpDown.Location = new System.Drawing.Point(49, 89);
             this.myGemsUpDown.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -169,183 +208,171 @@ namespace WindowsFormsApp1
             0});
             this.myGemsUpDown.Name = "myGemsUpDown";
             this.myGemsUpDown.Size = new System.Drawing.Size(120, 22);
-            this.myGemsUpDown.TabIndex = 1;
-            this.myGemsUpDown.ValueChanged += new System.EventHandler(this.myGemsUpDown_ValueChanged);
+            this.myGemsUpDown.TabIndex = 25;
+            this.myGemsUpDown.ValueChanged += new System.EventHandler(this.myGemsUpDown_ValueChanged_1);
             // 
-            // myGemsLabel
+            // serverGroupBox
             // 
-            this.myGemsLabel.AutoSize = true;
-            this.myGemsLabel.Location = new System.Drawing.Point(16, 122);
-            this.myGemsLabel.Name = "myGemsLabel";
-            this.myGemsLabel.Size = new System.Drawing.Size(201, 17);
-            this.myGemsLabel.TabIndex = 11;
-            this.myGemsLabel.Text = "How many gems do you have?";
+            this.serverGroupBox.Controls.Add(this.serverKORadio);
+            this.serverGroupBox.Controls.Add(this.serverGLRadio);
+            this.serverGroupBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverGroupBox.Location = new System.Drawing.Point(638, 10);
+            this.serverGroupBox.Name = "serverGroupBox";
+            this.serverGroupBox.Size = new System.Drawing.Size(128, 75);
+            this.serverGroupBox.TabIndex = 32;
+            this.serverGroupBox.TabStop = false;
+            this.serverGroupBox.Text = "Server:";
             // 
-            // calculateButton
+            // TargetUpDown
             // 
-            this.calculateButton.Location = new System.Drawing.Point(503, 26);
-            this.calculateButton.Name = "calculateButton";
-            this.calculateButton.Size = new System.Drawing.Size(93, 28);
-            this.calculateButton.TabIndex = 5;
-            this.calculateButton.Text = "Calculate";
-            this.calculateButton.UseVisualStyleBackColor = true;
-            this.calculateButton.Click += new System.EventHandler(this.calculateButton_Click);
+            this.TargetUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TargetUpDown.Location = new System.Drawing.Point(276, 32);
+            this.TargetUpDown.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.TargetUpDown.Name = "TargetUpDown";
+            this.TargetUpDown.Size = new System.Drawing.Size(120, 22);
+            this.TargetUpDown.TabIndex = 27;
+            this.TargetUpDown.ValueChanged += new System.EventHandler(this.TargetUpDown_ValueChanged_1);
             // 
-            // TicketThresholdLabel
+            // tokensOrTicketsLabel
             // 
-            this.TicketThresholdLabel.AutoSize = true;
-            this.TicketThresholdLabel.Location = new System.Drawing.Point(307, 206);
-            this.TicketThresholdLabel.Name = "TicketThresholdLabel";
-            this.TicketThresholdLabel.Size = new System.Drawing.Size(181, 85);
-            this.TicketThresholdLabel.TabIndex = 14;
-            this.TicketThresholdLabel.Text = "Exchange ticket thresholds:\r\n\r\n600 for L2D costumes\r\n200 for 5 star dolls\r\n100 fo" +
-    "r other dolls";
+            this.tokensOrTicketsLabel.AutoSize = true;
+            this.tokensOrTicketsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tokensOrTicketsLabel.Location = new System.Drawing.Point(273, 8);
+            this.tokensOrTicketsLabel.Name = "tokensOrTicketsLabel";
+            this.tokensOrTicketsLabel.Size = new System.Drawing.Size(152, 17);
+            this.tokensOrTicketsLabel.TabIndex = 31;
+            this.tokensOrTicketsLabel.Text = "3. What is your target?";
             // 
-            // efficientOutputLabel
+            // calculateTickets
             // 
-            this.efficientOutputLabel.AutoSize = true;
-            this.efficientOutputLabel.Location = new System.Drawing.Point(58, 304);
-            this.efficientOutputLabel.Name = "efficientOutputLabel";
-            this.efficientOutputLabel.Size = new System.Drawing.Size(95, 17);
-            this.efficientOutputLabel.TabIndex = 16;
-            this.efficientOutputLabel.Text = "Standing by...";
+            this.calculateTickets.AutoSize = true;
+            this.calculateTickets.Checked = true;
+            this.calculateTickets.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.calculateTickets.Location = new System.Drawing.Point(276, 91);
+            this.calculateTickets.Name = "calculateTickets";
+            this.calculateTickets.Size = new System.Drawing.Size(140, 21);
+            this.calculateTickets.TabIndex = 28;
+            this.calculateTickets.TabStop = true;
+            this.calculateTickets.Text = "Exchange Tickets";
+            this.calculateTickets.UseVisualStyleBackColor = true;
+            this.calculateTickets.CheckedChanged += new System.EventHandler(this.calculateTickets_CheckedChanged_1);
             // 
-            // clearButton
+            // calculateTokens
             // 
-            this.clearButton.Location = new System.Drawing.Point(503, 62);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(93, 28);
-            this.clearButton.TabIndex = 17;
-            this.clearButton.Text = "Reset";
-            this.clearButton.UseVisualStyleBackColor = true;
-            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
+            this.calculateTokens.AutoSize = true;
+            this.calculateTokens.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.calculateTokens.Location = new System.Drawing.Point(276, 116);
+            this.calculateTokens.Name = "calculateTokens";
+            this.calculateTokens.Size = new System.Drawing.Size(76, 21);
+            this.calculateTokens.TabIndex = 29;
+            this.calculateTokens.Text = "Tokens";
+            this.calculateTokens.UseVisualStyleBackColor = true;
             // 
-            // doubleCheckBox
+            // myTokensLabel
             // 
-            this.doubleCheckBox.AutoSize = true;
-            this.doubleCheckBox.Location = new System.Drawing.Point(12, 12);
-            this.doubleCheckBox.Name = "doubleCheckBox";
-            this.doubleCheckBox.Size = new System.Drawing.Size(349, 21);
-            this.doubleCheckBox.TabIndex = 18;
-            this.doubleCheckBox.Text = "Apply extra gifts? (this doubles gems per package)";
-            this.doubleCheckBox.UseVisualStyleBackColor = true;
-            this.doubleCheckBox.CheckedChanged += new System.EventHandler(this.doubleCheckBox_CheckedChanged);
+            this.myTokensLabel.AutoSize = true;
+            this.myTokensLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.myTokensLabel.Location = new System.Drawing.Point(8, 8);
+            this.myTokensLabel.Name = "myTokensLabel";
+            this.myTokensLabel.Size = new System.Drawing.Size(225, 17);
+            this.myTokensLabel.TabIndex = 26;
+            this.myTokensLabel.Text = "1. How many tokens do you have?";
             // 
-            // targetTypeLabel
+            // myTokensUpDown
             // 
-            this.targetTypeLabel.AutoSize = true;
-            this.targetTypeLabel.Location = new System.Drawing.Point(307, 122);
-            this.targetTypeLabel.Name = "targetTypeLabel";
-            this.targetTypeLabel.Size = new System.Drawing.Size(147, 17);
-            this.targetTypeLabel.TabIndex = 19;
-            this.targetTypeLabel.Text = "And this target is for...";
+            this.myTokensUpDown.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.myTokensUpDown.Location = new System.Drawing.Point(49, 32);
+            this.myTokensUpDown.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.myTokensUpDown.Name = "myTokensUpDown";
+            this.myTokensUpDown.Size = new System.Drawing.Size(120, 22);
+            this.myTokensUpDown.TabIndex = 24;
+            this.myTokensUpDown.ValueChanged += new System.EventHandler(this.myTokensUpDown_ValueChanged_1);
             // 
-            // aboutLabel
+            // AssumptionsLabel
             // 
-            this.aboutLabel.AutoSize = true;
-            this.aboutLabel.Location = new System.Drawing.Point(637, 206);
-            this.aboutLabel.Name = "aboutLabel";
-            this.aboutLabel.Size = new System.Drawing.Size(131, 17);
-            this.aboutLabel.TabIndex = 20;
-            this.aboutLabel.Text = "Why is this a thing?";
-            this.aboutLabel.Click += new System.EventHandler(this.aboutLabel_Click);
+            this.AssumptionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AssumptionsLabel.Location = new System.Drawing.Point(8, 3);
+            this.AssumptionsLabel.Name = "AssumptionsLabel";
+            this.AssumptionsLabel.Size = new System.Drawing.Size(758, 360);
+            this.AssumptionsLabel.TabIndex = 39;
+            this.AssumptionsLabel.Text = resources.GetString("AssumptionsLabel.Text");
             // 
-            // languageGroupBox
+            // tabPage3
             // 
-            this.languageGroupBox.Controls.Add(this.KoreanLanguageButton);
-            this.languageGroupBox.Controls.Add(this.EnglishRadioButton);
-            this.languageGroupBox.Location = new System.Drawing.Point(640, 93);
-            this.languageGroupBox.Name = "languageGroupBox";
-            this.languageGroupBox.Size = new System.Drawing.Size(128, 75);
-            this.languageGroupBox.TabIndex = 21;
-            this.languageGroupBox.TabStop = false;
-            this.languageGroupBox.Text = "Language:";
+            this.tabPage3.Controls.Add(this.AboutLabel);
+            this.tabPage3.Location = new System.Drawing.Point(4, 25);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(776, 526);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "About";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // KoreanLanguageButton
+            // AboutLabel
             // 
-            this.KoreanLanguageButton.AutoSize = true;
-            this.KoreanLanguageButton.Enabled = false;
-            this.KoreanLanguageButton.Location = new System.Drawing.Point(6, 48);
-            this.KoreanLanguageButton.Name = "KoreanLanguageButton";
-            this.KoreanLanguageButton.Size = new System.Drawing.Size(75, 21);
-            this.KoreanLanguageButton.TabIndex = 1;
-            this.KoreanLanguageButton.Text = "Korean";
-            this.KoreanLanguageButton.UseVisualStyleBackColor = true;
-            // 
-            // EnglishRadioButton
-            // 
-            this.EnglishRadioButton.AutoSize = true;
-            this.EnglishRadioButton.Checked = true;
-            this.EnglishRadioButton.Location = new System.Drawing.Point(6, 21);
-            this.EnglishRadioButton.Name = "EnglishRadioButton";
-            this.EnglishRadioButton.Size = new System.Drawing.Size(75, 21);
-            this.EnglishRadioButton.TabIndex = 0;
-            this.EnglishRadioButton.TabStop = true;
-            this.EnglishRadioButton.Text = "English";
-            this.EnglishRadioButton.UseVisualStyleBackColor = true;
+            this.AboutLabel.Location = new System.Drawing.Point(8, 12);
+            this.AboutLabel.Name = "AboutLabel";
+            this.AboutLabel.Size = new System.Drawing.Size(758, 290);
+            this.AboutLabel.TabIndex = 0;
+            this.AboutLabel.Text = resources.GetString("AboutLabel.Text");
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(782, 553);
-            this.Controls.Add(this.languageGroupBox);
-            this.Controls.Add(this.aboutLabel);
-            this.Controls.Add(this.targetTypeLabel);
-            this.Controls.Add(this.doubleCheckBox);
-            this.Controls.Add(this.clearButton);
-            this.Controls.Add(this.efficientOutputLabel);
-            this.Controls.Add(this.TicketThresholdLabel);
-            this.Controls.Add(this.calculateButton);
-            this.Controls.Add(this.myGemsLabel);
-            this.Controls.Add(this.myGemsUpDown);
-            this.Controls.Add(this.serverGroupBox);
-            this.Controls.Add(this.TargetUpDown);
-            this.Controls.Add(this.tokensOrTicketsLabel);
-            this.Controls.Add(this.calculateTickets);
-            this.Controls.Add(this.calculateTokens);
-            this.Controls.Add(this.myTokensLabel);
-            this.Controls.Add(this.myTokensUpDown);
+            this.Controls.Add(this.CalcTabs);
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Form1";
-            this.Text = "GFL Gems Calculator Ver.α";
+            this.Text = "Gems Calculator Ver. γ";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.myTokensUpDown)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.TargetUpDown)).EndInit();
+            this.CalcTabs.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.myGemsUpDown)).EndInit();
             this.serverGroupBox.ResumeLayout(false);
             this.serverGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.myGemsUpDown)).EndInit();
-            this.languageGroupBox.ResumeLayout(false);
-            this.languageGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TargetUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myTokensUpDown)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.NumericUpDown myTokensUpDown;
-        private System.Windows.Forms.Label myTokensLabel;
-        private System.Windows.Forms.RadioButton calculateTokens;
-        private System.Windows.Forms.RadioButton calculateTickets;
-        private System.Windows.Forms.Label tokensOrTicketsLabel;
-        private System.Windows.Forms.NumericUpDown TargetUpDown;
-        private System.Windows.Forms.RadioButton serverGLRadio;
+        private System.Windows.Forms.TabControl CalcTabs;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label targetTypeLabel;
+        private System.Windows.Forms.Button clearButton;
+        private System.Windows.Forms.Label efficientOutputLabel;
+        private System.Windows.Forms.Label TicketThresholdLabel;
+        private System.Windows.Forms.Button calculateButton;
+        private System.Windows.Forms.Label myGemsLabel;
+        private System.Windows.Forms.NumericUpDown myGemsUpDown;
         private System.Windows.Forms.GroupBox serverGroupBox;
         private System.Windows.Forms.RadioButton serverKORadio;
-        private System.Windows.Forms.NumericUpDown myGemsUpDown;
-        private System.Windows.Forms.Label myGemsLabel;
-        private System.Windows.Forms.Button calculateButton;
-        private System.Windows.Forms.Label TicketThresholdLabel;
-        private System.Windows.Forms.Label efficientOutputLabel;
-        private System.Windows.Forms.Button clearButton;
-        private System.Windows.Forms.CheckBox doubleCheckBox;
-        private System.Windows.Forms.Label targetTypeLabel;
-        private System.Windows.Forms.Label aboutLabel;
-        private System.Windows.Forms.GroupBox languageGroupBox;
-        private System.Windows.Forms.RadioButton KoreanLanguageButton;
-        private System.Windows.Forms.RadioButton EnglishRadioButton;
+        private System.Windows.Forms.RadioButton serverGLRadio;
+        private System.Windows.Forms.NumericUpDown TargetUpDown;
+        private System.Windows.Forms.Label tokensOrTicketsLabel;
+        private System.Windows.Forms.RadioButton calculateTickets;
+        private System.Windows.Forms.RadioButton calculateTokens;
+        private System.Windows.Forms.Label myTokensLabel;
+        private System.Windows.Forms.NumericUpDown myTokensUpDown;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label AssumptionsLabel;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label AboutLabel;
     }
 }
 

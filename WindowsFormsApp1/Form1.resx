@@ -117,6 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AssumptionsLabel.Text" xml:space="preserve">
+    <value>Instructions:
+
+1. Enter how many tokens you can spend on this gacha.
+2. Enter how many gems you can spend on this gacha.
+3. Enter the number of exchange tickets or tokens that you are aiming for.
+4. Select whether the number you entered in (3) refers to exchange tickets or tokens.
+5. Calculate your optimal spending strategy.
+6. Purchase gems as recommended and spend them all on tokens
+7. Spend all those tokens on the gacha and hope you luck out before you hit the ceiling.
+
+Disclaimer:
+This simulation assumes that you spend all of your gems on buying tokens and nothing else.
+(both the ones you already had as well as the ones you are expected to gain)
+Remember to buy the larger token packages (100 tokens for 600 gems) before the smaller packages.
+
+If you are willing to sacrifice a small amount of efficiency, only buy the most cost-effective gem packages
+(the 800, 4000, and 8000 gem packages) and with those gems only buy larger token packages.
+These cost a bit more than the optimal strategy but will allow you to stockpile tokens for later gachas.
+Strangely enough, the 2000 gem package is not as cost effective as the adjacent 800 or 4000 gem packages.
+
+I am less of a computer scientist and more of a chemist by training. If there are any flaws in this program or algorithm, I'm sincerely sorry.</value>
+  </data>
+  <data name="AboutLabel.Text" xml:space="preserve">
+    <value>Did you know that there is a 30% chance that you would hit the ceiling rolling for a L2D costume before you actually got one? That's a 70% chance for 600 failed attempts that would set you back at least 5,460 tokens! Guess how many hungry nights that's going to add up to.
+
+If you didn't know, that's ok. I didn't know either until I had to trade in my soul and future for R93's Holiday Lucky Star costume myself.
+But now with this tool available, we can all make educated decisions on how long we have to go hungry for to clothe (or in my case, unclothe) our raifus.
+
+May this beacon shine brightly with the souls of the rapturous.
+
+HKM4 best waifu tho.　やはり私がいないとダメなんですね。
+
+Gems Calculator ver. γ
+github.com/umbralunas/GemCalculator
+</value>
+  </data>
   <metadata name="$this.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

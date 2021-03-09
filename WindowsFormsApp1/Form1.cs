@@ -59,30 +59,20 @@ namespace WindowsFormsApp1
         /// <summary>
         /// The number of each package the user is expected to purchase to achieve their target using the efficient strategy.. If global, the last element is not used.
         /// </summary>
-        private int[] efficientPackage = new int[7];
+        private int[] solutionArray = new int[7];
         /// <summary>
         /// The number of gems left if following the efficient strategy.
         /// </summary>
-        private int efficientGemsLeft = 0;
+        private int gemsRemaining = 0;
         /// <summary>
-        /// The string output for the efficient strategy.
+        /// The final quote, in real currency, that the user is expected to pay for the efficient strategy.
         /// </summary>
-        private string efficientOutput = "";
-        /// <summary>
-        /// The final quote, in real currency, that the user is expected to pay for the cheapest strategy.
-        /// </summary>
-        private int efficientQuote = 0;
+        private int finalQuote = 0;
         /// <summary>
         /// An auxiliary boolean variable used to determine if the user is actively calculating a strategy.<br/>
         /// While this variable is <b>true,</b> any changes to myTokens, myGems, or target will also trigger a recalculation.
         /// </summary>
         private bool calcSet = false;
-        /// <summary>
-        /// A boolean to keep track of if the first time purchase bonuses are to be applied or not.<br/>
-        /// First time purchases receive an "extra gift" that doubles the gems granted per package.<br/>
-        /// Although I could just use the checkbox status... I figured this was better practice.
-        /// </summary>
-        private bool dubGems = false;
         public Form1()
         {
             InitializeComponent();
@@ -97,72 +87,11 @@ namespace WindowsFormsApp1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void calculateTickets_CheckedChanged(object sender, EventArgs e)
-        {
-            targetingTickets = calculateTickets.Checked;
-            ClearCalc();
-            if (calcSet)
-                Calculate();
-        }
 
-        private void myTokensUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            myTokens = (int)myTokensUpDown.Value;
-            ClearCalc();
-            if (calcSet)
-                Calculate();
-        }
-
-        private void TargetUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            target = (int)TargetUpDown.Value;
-            ClearCalc();
-            if (calcSet)
-                Calculate();
-        }
-        /// <summary>
-        /// A method to check which of the two servers (global or Korean) has been selected. Will be called every time the option is toggled.<br/>
-        /// This is because, surprisingly, global and Korea differs quite dramatically in both gems per package and price per package. Personally I prefer global a lot more. Better rounded.<br/>
-        /// Because there are only two options (and therefore only two radioboxes) a second <i>CheckedChanged</i> method on the Korean radiobox is redundant.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void serverGLRadio_CheckedChanged(object sender, EventArgs e)
-        {
-            serverGl = serverGLRadio.Checked;
-            ClearCalc();
-            if (calcSet)
-                Calculate();
-        }
-
-        private void myGemsUpDown_ValueChanged(object sender, EventArgs e)
-        {
-            myGems = (int)myGemsUpDown.Value;
-            ClearCalc();
-            if (calcSet)
-                Calculate();
-        }
-
-        private void calculateButton_Click(object sender, EventArgs e)
-        {
-            ClearCalc();
-            Calculate();
-            calcSet = true;
-        }
         /// <summary>
         /// A method to determine the "optimal" purchasing strategy for the user with <b>myTokens</b> tokens to reach <b>target</b> number of tokens or exchange tickets.<br/>
-        /// Note that "optimal" here follows two definitions, as made evident by the fork within this method:<para>
-        /// <b>1.</b> The strategy that results in the minimum amount of real life currency spent, or the <b>"cheapest"</b> strategy.<br/>
-        /// <b>2.</b> The strategy that allows for some additional expenditure to obtain leftover gems at a higher rate than usually possible, or the <b>"efficient"</b> strategy.
-        /// </para>
-        /// The cheapest strategy will allow for the user to attain their goal at the lowest price tag theoretically possible, while the efficient strategy will allow the user to gain a few gems (at most 800) at a very low additional cost (at most 10 dollars).<br/>
-        /// Unless the user is brinking on a life-or-death situation where they are forced to choose between a sandwich that will feed them for the rest of the day or a raifu costume, I personally recommend the efficient strategy.<br/>
-        /// This is because stockpiling a few more gems will contribute towards any potential future purchases as well, and although the cheapest strategy may indeed be the cheapest possible strategy at this time, the efficient strategy will grant leverage on any future purchases.<br/><br/>
-        /// 
-        /// Note that this distinction is only realistically significant on global because the cost efficiency on the Korean servers is so gradual that the most efficient strategy is basically the cheapest strategy.<br/>
-        /// On global there is a distinction because the 8000, 4000, and 800 gem packages all share the highest cost efficiency of 80 gems per USD, which dips at the 2000 gem package at 76.92 gems per USD and severely drops with the 330 gem package to 66 gems per USD.<br/>
-        /// This is what allows for a maximum of 800 gems more for a maximum of 10 USD spent on global (more than 80 leftover gems per USD spent)<br/>
-        /// On the Korean server, all packages are priced within 5% of the rate of the immediately larger package, compared to the 800-330 drop of 17.5% in rate on global.
+        /// Note that EN has a weird dip in package effectiveness with the 2000 gem package, set at 76.92 gems per dollar compared to the 8000, 4000, and 800 dollar packages that give a rate of 80 gems per dollar.<br/>
+        /// I do not believe this should be significant enough to incur major losses, but this is nonetheless a possible source of error.
         /// </summary>
         private void Calculate()
         {
@@ -180,61 +109,61 @@ namespace WindowsFormsApp1
             int hundPack = netToken / 100;
             int tenPack = (int)Math.Ceiling((netToken % 100) / 10.0);
             int gemCost = (hundPack * 600 + tenPack * 80) - myGems;
-            //Trivial case where net gem cost is negative (the user already has enough resources to fund their target)
+            //Trivial case where net gem cost is zero or negative (the user already has enough resources to fund their target)
             if (gemCost <= 0)
             {
                 efficientOutputLabel.Text = "You already have enough tokens and gems to reach your goal.";
                 return;
             }
             //Set temporary array for calculation depending on server
-            int[,] gems = new int[0, 0];
+            int[,] gems;
             if (serverGl)
                 gems = (int[,])glGemArray.Clone();
             else
                 gems = (int[,])krGemArray.Clone();
-            if (dubGems) //double gems if applying bonuses
-                for (int i = 0; i < gems.Length / 2; i++)
-                {
-                    gems[i, 0] *= 2;
-                }
             //Assess strategy
-            int count = 0;  //how many packages can you buy without going over the target
-            int remainder = 0;  //how many gems do you have left after filling count
-            EfficientOutputCalc(gemCost, gems, count, remainder);
+            EfficientOutputCalc(gemCost, gems);
             FormatEfficientOutput();
-            //packageNum holds information on which packages to buy, and bestRateIndex should tell us which package gives us more figurative bang for the literal buck
         }
         /// <summary>
         /// A helper method used to calculate the most efficient strategy available to the user.
         /// </summary>
         /// <param name="gemCost">The net cost in gems the user has to meet.</param>
         /// <param name="gems">The array of gem packages used by the method, depending on the server selected.</param>
-        /// <param name="count">The number of each package the user is expected to purchase.</param>
-        /// <param name="remainder">The remaining gem cost the user has to pay after purchasing packages.</param>
-        private void EfficientOutputCalc(int gemCost, int[,] gems, int count, int remainder)
+        private void EfficientOutputCalc(int gemCost, int[,] gems)
         {
-            for (int i = 0; i < gems.Length / 2; i++)    //for the efficient strategy,
+            int[,] solutionMatrix = new int[gems.Length / 2, gems.Length / 2];  //A matrix to store all viable solutions
+            int[] modulo = new int[gems.Length / 2];
+            int[] quoteArray = new int[gems.Length / 2];
+            int cheapestIndex = 0;
+            for (int i = 0; i < Math.Sqrt(solutionMatrix.Length); i++)
             {
-                //assign values for this package
-                count = gemCost / gems[i, 0];
-                remainder = gemCost % gems[i, 0];
-                //In the efficient strategy,
-                if ((remainder > 0 &&   //if there is a non-zero leftover that we still need to take care of
-                    i < gems.Length / 2 - 1 &&  //and this is not the last package
-                    Math.Ceiling((double)remainder / gems[i, 0]) * gems[i, 1] //and the expenditure to cover the remainder with this package
-                    <= Math.Ceiling((double)remainder / gems[i + 1, 0]) * gems[i + 1, 1]) //is less than the expenditure to cover the remainder with the next, smaller package
-                    || i == gems.Length / 2 - 1)  //or if this happens to be the last package available, and this is the only way to clean up the leftover
+                int tempCost = gemCost;
+                for (int j = 0; j < Math.Sqrt(solutionMatrix.Length); j++)
                 {
-                    //then buy this package since it's more efficient than buying multiple of the next package (or there is no next package to buy)
-                    //In this case we will not purchase any further packages and we can break out of the loop
-                    efficientPackage[i] = count + 1;
-                    efficientGemsLeft = gems[i, 0] - remainder;
-                    break;
+                    if (j == i) //and we are focusing on this particular package
+                        solutionMatrix[j, i] = (int)Math.Ceiling((double)tempCost / gems[j, 0]);    //then fill up to the target with this package
+                    else //if not
+                        solutionMatrix[j, i] = (int)Math.Floor((double)tempCost / gems[j, 0]);  //move on to the next package
+                    if (tempCost > 0)    //if there is still some amount to go for the target
+                    {
+                        tempCost -= solutionMatrix[j, i] * gems[j, 0];  //subtract from the current cost for the next package
+                        if (tempCost <= 0)   //if this change allowed the user to reach the target
+                        {
+                            modulo[i] = Math.Abs(tempCost); //log the amount of leftover gems from this transaction
+                            tempCost = 0;   //do not make any more purchases. We could break out of this loop, but for some reason it doesn't feel right.
+                        }
+                    }
+                    quoteArray[i] += solutionMatrix[j, i] * gems[j, 1];
                 }
-                //otherwise wrap it up and move on to the next package
-                efficientPackage[i] = count;
-                gemCost -= gems[i, 0] * count;
+                if (quoteArray[i] < quoteArray[cheapestIndex])   //if the quote from this solution is cheaper than our current "cheapest" solution
+                    cheapestIndex = i;  //switch out the "cheapest" solution for this one
             }
+            for (int i = 0; i < Math.Sqrt(solutionMatrix.Length); i++)
+            {
+                solutionArray[i] = solutionMatrix[i, cheapestIndex];
+            }
+            gemsRemaining = modulo[cheapestIndex];
         }
         /// <summary>
         /// A helper method used to format the string output for the efficient strategy.
@@ -242,40 +171,35 @@ namespace WindowsFormsApp1
         private void FormatEfficientOutput()
         {
             string output;
-            output = "The most efficient strategy is: \n\n";
+            output = "Your most efficient strategy is: \n\n";
             //global servers require no package names
             if (serverGl)
             {
                 for (int i = (glGemArray.Length / 2) - 1; i >= 0; i--)
                 {
-                    if (efficientPackage[i] != 0)
+                    if (solutionArray[i] != 0)
                     {
-                        output += efficientPackage[i] + "x " + glGemArray[i, 0] + " Gems package\n";
-                        efficientQuote += glGemArray[i, 1] * efficientPackage[i];
+                        output += solutionArray[i] + "x " + glGemArray[i, 0] + " Gems package\n";
+                        finalQuote += glGemArray[i, 1] * solutionArray[i];
                     }
                 }
-                output += "\nCosting a net " + efficientQuote + " USD\n" +
-                "and " + efficientGemsLeft + " additional gems left over";
+                output += "\nCosting a net " + finalQuote + " USD\n" +
+                "and " + gemsRemaining + " additional gems left over";
             }
             else
             {
                 for (int i = (krGemArray.Length / 2) - 1; i >= 0; i--)
                 {
-                    if (efficientPackage[i] != 0)
+                    if (solutionArray[i] != 0)
                     {
-                        output += efficientPackage[i] + "x " + krGemName[i] + "\n";
-                        efficientQuote += krGemArray[i, 1] * efficientPackage[i];
+                        output += solutionArray[i] + "x " + krGemName[i] + "\n";
+                        finalQuote += krGemArray[i, 1] * solutionArray[i];
                     }
                 }
-                output += "\nCosting a net " + efficientQuote + " KRW\n" +
-                "and " + efficientGemsLeft + " additional gems left over";
+                output += "\nCosting net " + finalQuote + " KRW\n" +
+                "and " + gemsRemaining + " additional gems left over";
             }
             efficientOutputLabel.Text = output;
-            Console.WriteLine(dubGems);
-        }
-        private void clearButton_Click(object sender, EventArgs e)
-        {
-            ClearAll();
         }
         /// <summary>
         /// A method that reconfigures all variables to their default settings. Excluding readonly objects, of course.<br/>
@@ -288,10 +212,9 @@ namespace WindowsFormsApp1
             myTokens = 0;
             myGems = 0;
             target = 0;
-            efficientPackage = new int[7];
-            efficientGemsLeft = 0;
-            efficientOutput = "";
-            efficientQuote = 0;
+            solutionArray = new int[7];
+            gemsRemaining = 0;
+            finalQuote = 0;
             calcSet = false;
             //Winforms
             calculateTickets.Checked = true;
@@ -306,28 +229,70 @@ namespace WindowsFormsApp1
         /// </summary>
         private void ClearCalc()
         {
-            efficientPackage = new int[7];
-            efficientGemsLeft = 0;
-            efficientOutput = "";
-            efficientQuote = 0;
+            solutionArray = new int[7];
+            gemsRemaining = 0;
+            finalQuote = 0;
         }
 
-        private void doubleCheckBox_CheckedChanged(object sender, EventArgs e)
+        private void calculateButton_Click_1(object sender, EventArgs e)
         {
-            dubGems = doubleCheckBox.Checked;
+            ClearCalc();
+            Calculate();
+            calcSet = true;
+        }
+
+        private void clearButton_Click_1(object sender, EventArgs e)
+        {
+            ClearAll();
+        }
+
+        private void myTokensUpDown_ValueChanged_1(object sender, EventArgs e)
+        {
+            myTokens = (int)myTokensUpDown.Value;
             ClearCalc();
             if (calcSet)
                 Calculate();
         }
 
-        private void aboutLabel_Click(object sender, EventArgs e)
+        private void myGemsUpDown_ValueChanged_1(object sender, EventArgs e)
         {
-            MessageBox.Show("Did you know that there is a 30% chance that you would hit the ceiling rolling for a L2D costume without hitting the costume?\n" +
-                 "That's 600 failed attempts that would set you back at least 5,455 tokens!\n\n" +
-                 "If you didn't know, that's ok. I didn't know until I had to trade in a month's worth of food for R93's Holiday Lucky Star costume myself.\n" +
-                 "But now with this tool available, we can all make educated decisions on how long we have to go without food to clothe (or in my case, unclothe) our raifus.\n\n" +
-                 "HKM4 best waifu tho.", "About GFL Gems Calculator Ver.α");
+            myGems = (int)myGemsUpDown.Value;
+            ClearCalc();
+            if (calcSet)
+                Calculate();
         }
+
+        private void TargetUpDown_ValueChanged_1(object sender, EventArgs e)
+        {
+            target = (int)TargetUpDown.Value;
+            ClearCalc();
+            if (calcSet)
+                Calculate();
+        }
+
+        private void serverGLRadio_CheckedChanged(object sender, EventArgs e)
+        {
+            serverGl = serverGLRadio.Checked;
+            ClearCalc();
+            if (calcSet)
+                Calculate();
+        }
+
+        private void calculateTickets_CheckedChanged_1(object sender, EventArgs e)
+        {
+            targetingTickets = calculateTickets.Checked;
+            ClearCalc();
+            if (calcSet)
+                Calculate();
+        }
+
+        /// <summary>
+        /// A method to check which of the two servers (global or Korean) has been selected. Will be called every time the option is toggled.<br/>
+        /// This is because, surprisingly, global and Korea differs quite dramatically in both gems per package and price per package. Personally I prefer global a lot more. Better rounded.<br/>
+        /// Because there are only two options (and therefore only two radioboxes) a second <i>CheckedChanged</i> method on the Korean radiobox is redundant.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
 
     }
 
