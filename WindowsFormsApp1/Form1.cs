@@ -73,6 +73,14 @@ namespace WindowsFormsApp1
         /// While this variable is <b>true,</b> any changes to myTokens, myGems, or target will also trigger a recalculation.
         /// </summary>
         private bool calcSet = false;
+        /// <summary>
+        /// An int value to keep track of how many additional tokens the user needs to reach their goal. Probably not necessary, as I could remove the temporary int within the method and replace it with this class variable.
+        /// </summary>
+        private int tokensReq = 0;
+        /// <summary>
+        /// An int value to keep track of how many additional gems the user needs to reach their goal. Probably not necessary, as I could remove the temporary int within the method and replace it with this class variable.
+        /// </summary>
+        private int gemsReq = 0;
         public Form1()
         {
             InitializeComponent();
@@ -105,10 +113,12 @@ namespace WindowsFormsApp1
             }
             else
                 netToken = target - myTokens;
+            tokensReq = netToken;
             //Calculate gem cost for reaching target value
             int hundPack = netToken / 100;
             int tenPack = (int)Math.Ceiling((netToken % 100) / 10.0);
             int gemCost = (hundPack * 600 + tenPack * 80) - myGems;
+            gemsReq = gemCost;
             //Trivial case where net gem cost is zero or negative (the user already has enough resources to fund their target)
             if (gemCost <= 0)
             {
@@ -171,7 +181,9 @@ namespace WindowsFormsApp1
         private void FormatEfficientOutput()
         {
             string output;
-            output = "Your most efficient strategy is: \n\n";
+            output = "You will require "+tokensReq+" additional Tokens to reach your goal.\n";
+            output += "This is equivalent to an investment of "+gemsReq+" additional Gems.\n\n";
+            output += "Your most efficient strategy is: \n\n";
             //global servers require no package names
             if (serverGl)
             {
@@ -285,15 +297,6 @@ namespace WindowsFormsApp1
             if (calcSet)
                 Calculate();
         }
-
-        /// <summary>
-        /// A method to check which of the two servers (global or Korean) has been selected. Will be called every time the option is toggled.<br/>
-        /// This is because, surprisingly, global and Korea differs quite dramatically in both gems per package and price per package. Personally I prefer global a lot more. Better rounded.<br/>
-        /// Because there are only two options (and therefore only two radioboxes) a second <i>CheckedChanged</i> method on the Korean radiobox is redundant.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-
     }
 
 }

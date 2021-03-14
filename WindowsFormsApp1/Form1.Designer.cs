@@ -32,33 +32,33 @@ namespace WindowsFormsApp1
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.CalcTabs = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.serverKORadio = new System.Windows.Forms.RadioButton();
-            this.serverGLRadio = new System.Windows.Forms.RadioButton();
+            this.efficientOutputLabel = new System.Windows.Forms.Label();
             this.targetTypeLabel = new System.Windows.Forms.Label();
             this.clearButton = new System.Windows.Forms.Button();
-            this.efficientOutputLabel = new System.Windows.Forms.Label();
             this.TicketThresholdLabel = new System.Windows.Forms.Label();
             this.calculateButton = new System.Windows.Forms.Button();
             this.myGemsLabel = new System.Windows.Forms.Label();
             this.myGemsUpDown = new System.Windows.Forms.NumericUpDown();
             this.serverGroupBox = new System.Windows.Forms.GroupBox();
+            this.serverKORadio = new System.Windows.Forms.RadioButton();
+            this.serverGLRadio = new System.Windows.Forms.RadioButton();
             this.TargetUpDown = new System.Windows.Forms.NumericUpDown();
             this.tokensOrTicketsLabel = new System.Windows.Forms.Label();
             this.calculateTickets = new System.Windows.Forms.RadioButton();
             this.calculateTokens = new System.Windows.Forms.RadioButton();
             this.myTokensLabel = new System.Windows.Forms.Label();
             this.myTokensUpDown = new System.Windows.Forms.NumericUpDown();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.AssumptionsLabel = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.AboutLabel = new System.Windows.Forms.Label();
             this.CalcTabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.myGemsUpDown)).BeginInit();
             this.serverGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TargetUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.myTokensUpDown)).BeginInit();
+            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,42 +97,15 @@ namespace WindowsFormsApp1
             this.tabPage1.Text = "Calculator";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
+            // efficientOutputLabel
             // 
-            this.tabPage2.Controls.Add(this.AssumptionsLabel);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(776, 526);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "How to use";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // serverKORadio
-            // 
-            this.serverKORadio.AutoSize = true;
-            this.serverKORadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serverKORadio.Location = new System.Drawing.Point(6, 48);
-            this.serverKORadio.Name = "serverKORadio";
-            this.serverKORadio.Size = new System.Drawing.Size(75, 21);
-            this.serverKORadio.TabIndex = 9;
-            this.serverKORadio.TabStop = true;
-            this.serverKORadio.Text = "Korean";
-            this.serverKORadio.UseVisualStyleBackColor = true;
-            // 
-            // serverGLRadio
-            // 
-            this.serverGLRadio.AutoSize = true;
-            this.serverGLRadio.Checked = true;
-            this.serverGLRadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.serverGLRadio.Location = new System.Drawing.Point(6, 21);
-            this.serverGLRadio.Name = "serverGLRadio";
-            this.serverGLRadio.Size = new System.Drawing.Size(103, 21);
-            this.serverGLRadio.TabIndex = 8;
-            this.serverGLRadio.TabStop = true;
-            this.serverGLRadio.Text = "Global (EN)";
-            this.serverGLRadio.UseVisualStyleBackColor = true;
-            this.serverGLRadio.CheckedChanged += new System.EventHandler(this.serverGLRadio_CheckedChanged);
+            this.efficientOutputLabel.AutoSize = true;
+            this.efficientOutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.efficientOutputLabel.Location = new System.Drawing.Point(93, 294);
+            this.efficientOutputLabel.Name = "efficientOutputLabel";
+            this.efficientOutputLabel.Size = new System.Drawing.Size(40, 17);
+            this.efficientOutputLabel.TabIndex = 35;
+            this.efficientOutputLabel.Text = "        ";
             // 
             // targetTypeLabel
             // 
@@ -154,16 +127,6 @@ namespace WindowsFormsApp1
             this.clearButton.Text = "Reset";
             this.clearButton.UseVisualStyleBackColor = true;
             this.clearButton.Click += new System.EventHandler(this.clearButton_Click_1);
-            // 
-            // efficientOutputLabel
-            // 
-            this.efficientOutputLabel.AutoSize = true;
-            this.efficientOutputLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.efficientOutputLabel.Location = new System.Drawing.Point(93, 294);
-            this.efficientOutputLabel.Name = "efficientOutputLabel";
-            this.efficientOutputLabel.Size = new System.Drawing.Size(40, 17);
-            this.efficientOutputLabel.TabIndex = 35;
-            this.efficientOutputLabel.Text = "        ";
             // 
             // TicketThresholdLabel
             // 
@@ -222,6 +185,32 @@ namespace WindowsFormsApp1
             this.serverGroupBox.TabIndex = 32;
             this.serverGroupBox.TabStop = false;
             this.serverGroupBox.Text = "Server:";
+            // 
+            // serverKORadio
+            // 
+            this.serverKORadio.AutoSize = true;
+            this.serverKORadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverKORadio.Location = new System.Drawing.Point(6, 48);
+            this.serverKORadio.Name = "serverKORadio";
+            this.serverKORadio.Size = new System.Drawing.Size(75, 21);
+            this.serverKORadio.TabIndex = 9;
+            this.serverKORadio.TabStop = true;
+            this.serverKORadio.Text = "Korean";
+            this.serverKORadio.UseVisualStyleBackColor = true;
+            // 
+            // serverGLRadio
+            // 
+            this.serverGLRadio.AutoSize = true;
+            this.serverGLRadio.Checked = true;
+            this.serverGLRadio.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.serverGLRadio.Location = new System.Drawing.Point(6, 21);
+            this.serverGLRadio.Name = "serverGLRadio";
+            this.serverGLRadio.Size = new System.Drawing.Size(103, 21);
+            this.serverGLRadio.TabIndex = 8;
+            this.serverGLRadio.TabStop = true;
+            this.serverGLRadio.Text = "Global (EN)";
+            this.serverGLRadio.UseVisualStyleBackColor = true;
+            this.serverGLRadio.CheckedChanged += new System.EventHandler(this.serverGLRadio_CheckedChanged);
             // 
             // TargetUpDown
             // 
@@ -296,6 +285,17 @@ namespace WindowsFormsApp1
             this.myTokensUpDown.TabIndex = 24;
             this.myTokensUpDown.ValueChanged += new System.EventHandler(this.myTokensUpDown_ValueChanged_1);
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.AssumptionsLabel);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(776, 526);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "How to use";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // AssumptionsLabel
             // 
             this.AssumptionsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -333,17 +333,17 @@ namespace WindowsFormsApp1
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Form1";
-            this.Text = "Gems Calculator Ver. γ";
+            this.Text = "Gems Calculator Ver. γ.1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.CalcTabs.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.myGemsUpDown)).EndInit();
             this.serverGroupBox.ResumeLayout(false);
             this.serverGroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TargetUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.myTokensUpDown)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.ResumeLayout(false);
 
